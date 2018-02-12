@@ -19,14 +19,36 @@ function prepareButton(buttonEl, soundName) {
     });
 }
 
-var ipc = require('ipc');
+var ipc = require('electron').ipcRenderer;
 
 var closeEl = document.querySelector('.close');
 closeEl.addEventListener('click', function () {
     ipc.send('close-main-window');
 });
 
-ipc.on('global-shortcut', function (arg) {
+
+/*
+ipc.on('global-shortcut',function(arg){
+  var event = new MouseEvent('click');
+  soundButtons[arg].dispatchEvent(event);
+  console.log("button"+arg+"clicked");
+});
+*/
+
+// it turns out that there must be a event argument in the function
+ipc.on('global-shortcut',(event,buttonArg)=>{
+    console.log('hit!');
+    var event2= new MouseEvent('click');
+    soundButtons[buttonArg].dispatchEvent(event2);
+});
+/*
+ipc.on('global-shortcut',function (arg) {
+    console.log('hit!');
     var event = new MouseEvent('click');
     soundButtons[arg].dispatchEvent(event);
+});
+*/
+var settingsEl = document.querySelector('.settings');
+settingsEl.addEventListener('click', function () {
+    ipc.send('open-settings-window');
 });
