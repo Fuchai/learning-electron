@@ -1,4 +1,14 @@
 // Add your settings.js code in this file
+
+'use strict';
+
+var ipc =require('electron').ipcRenderer;
+
+var closeEl= document.querySelector('.close');
+closeEl.addEventListener('click',function(e){
+    ipc.send('close-settings-window');
+})
+
 var configuration = require('../configuration.js');
 
 var modifierCheckboxes = document.querySelectorAll('.global-shortcut');
@@ -18,9 +28,11 @@ function bindModifierCheckboxes(e){
     var modifierKey= e.target.attributes['data-modifier-key'].value;
 
     if (shortcutKeys.indexOf(modifierKey) !== -1){
+        // If the box was ticked before, then at tick, remove the shortcut key.
         var shortcutKeyIndex = shortcutKeys.indexOf(modifierKey);
         shortcutKeys.splice(shortcutKeyIndex,1);
     }else{
+        // add the shortcut key
         shortcutKeys.push(modifierKey);
     }
 
