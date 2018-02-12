@@ -10,6 +10,10 @@ var mainWindow = null;
 
 const{app,globalShortcut,BrowserWindow}=require('electron');
 
+var globalShortcut = require('global-shortcut');
+
+var configuration = require('./configuration');
+
 app.on('ready', function() {
     if (!configuration.readSettings('shortcutKeys')) {
         configuration.saveSettings('shortcutKeys', ['ctrl', 'shift']);
