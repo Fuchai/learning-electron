@@ -48,3 +48,7 @@ ipc.on('global-shortcut',function (arg) {
     soundButtons[arg].dispatchEvent(event);
 });
 */
+var settingsEl = document.querySelector('.settings');
+settingsEl.addEventListener('click', function () {
+    ipc.send('open-settings-window');
+});
