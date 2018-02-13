@@ -1,6 +1,7 @@
 'use strict';
 
 var nconf = require('nconf').file({file: getUserHome() + '/sound-machine-config.json'});
+//like, can you not
 
 function saveSettings(settingKey, settingValue) {
     nconf.set(settingKey, settingValue);

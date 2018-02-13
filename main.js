@@ -9,7 +9,6 @@ var mainWindow = null;
 //var globalShortcut = require('electron').GlobalShortcut;
 
 const{app,globalShortcut,BrowserWindow}=require('electron');
-
 var globalShortcut = require('global-shortcut');
 
 var configuration = require('./configuration');
