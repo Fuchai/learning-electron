@@ -53,6 +53,7 @@ settingsEl.addEventListener('click', function () {
     ipc.send('open-settings-window');
 });
 
+<<<<<<< HEAD
 
 // var remote = require('electron').remote;
 // var Tray = remote. require('tray');
@@ -67,6 +68,20 @@ if (process.platform=='darwin'){
     trayIcon= new Tray(path.join(__dirname,'img/tray-iconTemplate.png'));
 }else{
     trayIcon=new Tray(path.join(__dirname,'img/tray-icon-alt.png'));
+=======
+var remote = require('remote');
+var Tray = remote.require('tray');
+var Menu = remote.require('menu');
+var path = require('path');
+
+var trayIcon = null;
+
+if (process.platform === 'darwin') {
+    trayIcon = new Tray(path.join(__dirname, 'img/tray-iconTemplate.png'));
+}
+else {
+    trayIcon = new Tray(path.join(__dirname, 'img/tray-icon-alt.png'));
+>>>>>>> 07-ready-for-packaging
 }
 
 var trayMenuTemplate = [
@@ -87,6 +102,11 @@ var trayMenuTemplate = [
         }
     }
 ];
+<<<<<<< HEAD
 
 var trayMenu=Menu.buildFromTemplate(trayMenuTemplate);
 trayIcon.setContextMenu(trayMenu);
+=======
+var trayMenu = Menu.buildFromTemplate(trayMenuTemplate);
+trayIcon.setContextMenu(trayMenu);
+>>>>>>> 07-ready-for-packaging
